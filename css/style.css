@@ -8,4 +8,11 @@
 }
 #list ul li{
     list-style-type: none;
+    height: 30px;
+}
+#list li input{
+    margin-right: 5px;
+}
+.button{
+    float: right;
 }
