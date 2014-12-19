@@ -16,3 +16,6 @@
 .button{
     float: right;
 }
+.text-li{
+    text-decoration: line-through;
+}

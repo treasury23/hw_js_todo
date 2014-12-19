@@ -12,17 +12,25 @@ input.addEventListener('keyup', function(e){
         var li = document.createElement('li'),
             button = document.createElement('button'),
             t = document.createTextNode(e.target.value);
-            chk = document.createElement("input"),
+            chk = document.createElement("input");
             chk.setAttribute("type", "checkbox");
 
         button.className='button';
-        button.innerHTML = 'Remove'
-        button.onclick = function(){this.parentNode.remove();}
+        button.innerHTML = 'Remove';
+        button.onclick = function(){this.parentNode.remove();};
+        chk.onclick = function(e){
+            if (e.target.checked == true) {
+                console.log(this.parentNode);
+                this.parentNode.className = 'text-li';
+            } else {
+                this.parentNode.className = "";
+            }
+        };
 
-        li.appendChild(chk)
+        li.appendChild(chk);
         li.appendChild(t);
 
         ul.appendChild(li).appendChild(button);
         input.value = "";
     }
-})
+});
