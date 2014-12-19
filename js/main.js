@@ -10,12 +10,17 @@ input.addEventListener('keyup', function(e){
     if (e.target.value != '' && e.keyCode === 13) {
 
         var li = document.createElement('li'),
-            button = document.createElement('button');
+            button = document.createElement('button'),
+            t = document.createTextNode(e.target.value);
+            chk = document.createElement("input"),
+            chk.setAttribute("type", "checkbox");
 
         button.className='button';
         button.innerHTML = 'Remove'
+        button.onclick = function(){this.parentNode.remove();}
 
-        li.innerHTML = '<input type="checkbox">' + e.target.value;
+        li.appendChild(chk)
+        li.appendChild(t);
 
         ul.appendChild(li).appendChild(button);
         input.value = "";
