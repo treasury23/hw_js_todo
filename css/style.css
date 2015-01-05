@@ -1,3 +1,9 @@
+body{
+    font-size: 20px;
+}
+ul{
+    padding: 0px;
+}
 .wrapper{
     width: 400px;
     margin: 0 auto;
@@ -8,14 +14,18 @@
 }
 #list ul li{
     list-style-type: none;
-    height: 30px;
+    height: 35px;
 }
-#list li input{
+#list li input, #check-all{
     margin-right: 5px;
 }
-.button{
+.btn{
     float: right;
 }
 .text-li{
     text-decoration: line-through;
+}
+.stats-list{
+    border-top: solid 2px #000000;
+    margin-bottom: 10px;
 }

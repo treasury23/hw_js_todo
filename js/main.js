@@ -3,7 +3,8 @@
  */
 
 var input = document.querySelector('#input-text'),
-    ul = document.querySelector('#list').appendChild(document.createElement('ul'));
+    ul = document.querySelector('#list').appendChild(document.createElement('ul')),
+    checkAll = document.querySelector('#check-all');
 
 input.addEventListener('keyup', function(e){
 
@@ -15,7 +16,7 @@ input.addEventListener('keyup', function(e){
             chk = document.createElement("input");
             chk.setAttribute("type", "checkbox");
 
-        button.className='button';
+        button.className='btn btn-danger';
         button.innerHTML = 'Remove';
         button.onclick = function(){this.parentNode.remove();};
         chk.onclick = function(e){
@@ -33,4 +34,16 @@ input.addEventListener('keyup', function(e){
         ul.appendChild(li).appendChild(button);
         input.value = "";
     }
+});
+
+checkAll.addEventListener('change', function(e){
+    if (e.target.checked) {
+        [].forEach.call(ul.querySelectorAll('li'), function(el) {
+           el.className = 'text-li';
+        });
+    } else {
+        [].forEach.call(ul.querySelectorAll('li'), function(el) {
+            el.className = '';
+        });
+    };
 });
