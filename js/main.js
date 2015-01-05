@@ -4,6 +4,7 @@
 
 var input = document.querySelector('#input-text'),
     ul = document.querySelector('#list').appendChild(document.createElement('ul')),
+    totalAll = document.querySelector('#total-all'),
     checkAll = document.querySelector('#check-all');
 
 input.addEventListener('keyup', function(e){
@@ -18,7 +19,7 @@ input.addEventListener('keyup', function(e){
 
         button.className='btn btn-danger';
         button.innerHTML = 'Remove';
-        button.onclick = function(){this.parentNode.remove();};
+        button.onclick = function(){this.parentNode.remove();showTotalAll(ul);};
         chk.onclick = function(e){
             if (e.target.checked == true) {
                 console.log(this.parentNode);
@@ -33,6 +34,7 @@ input.addEventListener('keyup', function(e){
 
         ul.appendChild(li).appendChild(button);
         input.value = "";
+        showTotalAll(ul);
     }
 });
 
@@ -47,3 +49,11 @@ checkAll.addEventListener('change', function(e){
         });
     };
 });
+
+function showTotalAll(ul)
+{
+    var allLi = ul.querySelectorAll('li');
+    //var selectedLi = ul.querySelectorAll('li.selected-li');
+
+    totalAll.innerText = ' All item: ' + allLi.length;
+}
