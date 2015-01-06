@@ -24,8 +24,12 @@ ul{
 }
 .text-li{
     text-decoration: line-through;
+    color: #C0C0C0;
 }
 .stats-list{
     border-top: solid 2px #000000;
     margin-bottom: 10px;
+}
+#total-all{
+    padding-left: 25px;
 }

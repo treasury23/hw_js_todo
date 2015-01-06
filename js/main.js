@@ -5,6 +5,7 @@
 var input = document.querySelector('#input-text'),
     ul = document.querySelector('#list').appendChild(document.createElement('ul')),
     totalAll = document.querySelector('#total-all'),
+    totalCheckAll = document.querySelector('#total-select'),
     checkAll = document.querySelector('#check-all');
 
 input.addEventListener('keyup', function(e){
@@ -13,19 +14,21 @@ input.addEventListener('keyup', function(e){
 
         var li = document.createElement('li'),
             button = document.createElement('button'),
-            t = document.createTextNode(e.target.value);
+            t = document.createTextNode(e.target.value),
             chk = document.createElement("input");
             chk.setAttribute("type", "checkbox");
 
         button.className='btn btn-danger';
         button.innerHTML = 'Remove';
-        button.onclick = function(){this.parentNode.remove();showTotalAll(ul);};
+        button.onclick = function(){this.parentNode.remove();showTotalAll(ul);showTotalCheckAll(ul);};
         chk.onclick = function(e){
             if (e.target.checked == true) {
                 console.log(this.parentNode);
                 this.parentNode.className = 'text-li';
+                showTotalCheckAll(ul);
             } else {
                 this.parentNode.className = "";
+                showTotalCheckAll(ul);
             }
         };
 
@@ -41,19 +44,27 @@ input.addEventListener('keyup', function(e){
 checkAll.addEventListener('change', function(e){
     if (e.target.checked) {
         [].forEach.call(ul.querySelectorAll('li'), function(el) {
-           el.className = 'text-li';
+            el.className = 'text-li';
+            el.children[0].checked = true;
+            showTotalCheckAll(ul);
         });
     } else {
         [].forEach.call(ul.querySelectorAll('li'), function(el) {
             el.className = '';
+            el.children[0].checked = false;
+            showTotalCheckAll(ul);
         });
-    };
+    }
 });
 
 function showTotalAll(ul)
 {
     var allLi = ul.querySelectorAll('li');
-    //var selectedLi = ul.querySelectorAll('li.selected-li');
-
     totalAll.innerText = ' All item: ' + allLi.length;
+}
+
+function showTotalCheckAll(ul)
+{
+    var allSelectLi = ul.querySelectorAll('.text-li');
+    totalCheckAll.innerText = 'Clear selected('+allSelectLi.length+')';
 }
