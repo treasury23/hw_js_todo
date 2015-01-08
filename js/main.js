@@ -16,7 +16,8 @@ input.addEventListener('keyup', function(e){
 
         var li = document.createElement('li'),
             button = document.createElement('button'),
-            span = document.createElement('span'),
+            span = document.createElement('span');
+            span.setAttribute("contenteditable", "true");
             t = document.createTextNode(e.target.value),
             chk = document.createElement("input");
             chk.setAttribute("type", "checkbox");
@@ -36,8 +37,8 @@ input.addEventListener('keyup', function(e){
         };
 
         li.appendChild(chk);
-        
-        li.appendChild(t);
+
+        li.appendChild(span).appendChild(t);
 
         ul.appendChild(li).appendChild(button);
         input.value = "";
@@ -58,7 +59,7 @@ checkAll.addEventListener('change', function(e){
             el.className = '';
             el.children[0].checked = false;
             showTotalCheckAll(ul);
-            buttonTotalSelect.setAttribute('disabled', true);
+            buttonTotalSelect.setAttribute('disabled', 'true');
         });
     }
 });
@@ -75,12 +76,12 @@ function showTotalCheckAll(ul)
     if (allSelectLi.length>0) {
         buttonTotalSelect.removeAttribute('disabled');
     } else {
-        buttonTotalSelect.setAttribute('disabled', true);
+        buttonTotalSelect.setAttribute('disabled', 'true');
     }
     totalCheckAll.textContent = 'Clear selected('+allSelectLi.length+')';
 }
 
-totalCheckAll.addEventListener('click', function(e){
+totalCheckAll.addEventListener('click', function(){
     [].forEach.call(ul.querySelectorAll('.text-li'), function(el){
         el.remove();
         checkAll.checked = false;
@@ -96,20 +97,17 @@ filterSelect.addEventListener('change', function(e){
         if (e.target.value == 'all') {
             el.style.display='';
         } else if (e.target.value == 'perfomed') {
-            if (el.className == 'text-li'){
+            if (el.classList.contains('text-li')){
                 el.style.display = '';
             } else {
                 el.style.display = 'none';
             }
         } else if (e.target.value == 'notperfomed'){
-            if (el.className == 'text-li'){
+            if (el.classList.contains('text-li')){
                 el.style.display = 'none';
             } else {
                 el.style.display = '';
             }
-
         }
-    })
-
-
+    });
 });
