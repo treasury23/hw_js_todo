@@ -14,6 +14,7 @@ input.addEventListener('keyup', function(e){
 
         var li = document.createElement('li'),
             button = document.createElement('button'),
+            span = document.createElement('span'),
             t = document.createTextNode(e.target.value),
             chk = document.createElement("input");
             chk.setAttribute("type", "checkbox");
@@ -33,6 +34,7 @@ input.addEventListener('keyup', function(e){
         };
 
         li.appendChild(chk);
+        
         li.appendChild(t);
 
         ul.appendChild(li).appendChild(button);
@@ -68,3 +70,12 @@ function showTotalCheckAll(ul)
     var allSelectLi = ul.querySelectorAll('.text-li');
     totalCheckAll.innerText = 'Clear selected('+allSelectLi.length+')';
 }
+
+totalCheckAll.addEventListener('click', function(e){
+    [].forEach.call(ul.querySelectorAll('.text-li'), function(el){
+        el.remove();
+        checkAll.checked = false;
+    });
+    showTotalAll(ul);
+    showTotalCheckAll(ul);
+});
