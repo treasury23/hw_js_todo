@@ -90,5 +90,26 @@ totalCheckAll.addEventListener('click', function(e){
 });
 
 filterSelect.addEventListener('change', function(e){
-    console.log(e.target.value);
+
+    [].forEach.call(ul.querySelectorAll('li'), function(el){
+
+        if (e.target.value == 'all') {
+            el.style.display='';
+        } else if (e.target.value == 'perfomed') {
+            if (el.className == 'text-li'){
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        } else if (e.target.value == 'notperfomed'){
+            if (el.className == 'text-li'){
+                el.style.display = 'none';
+            } else {
+                el.style.display = '';
+            }
+
+        }
+    })
+
+
 });
