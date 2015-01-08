@@ -1,0 +1,35 @@
+body{
+    font-size: 20px;
+}
+ul{
+    padding: 0px;
+}
+.wrapper{
+    width: 400px;
+    margin: 0 auto;
+}
+.title{
+    font-size: 40px;
+    text-align: center;
+}
+#list ul li{
+    list-style-type: none;
+    height: 35px;
+}
+#list li input, #check-all{
+    margin-right: 5px;
+}
+.btn{
+    float: right;
+}
+.text-li{
+    text-decoration: line-through;
+    color: #C0C0C0;
+}
+.stats-list{
+    border-top: solid 2px #000000;
+    margin-bottom: 10px;
+}
+#total-all{
+    padding-left: 25px;
+}
