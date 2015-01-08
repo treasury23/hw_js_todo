@@ -7,6 +7,7 @@ var input = document.querySelector('#input-text'),
     totalAll = document.querySelector('#total-all'),
     totalCheckAll = document.querySelector('#total-select'),
     checkAll = document.querySelector('#check-all');
+    buttonTotalSelect = document.querySelector('#total-select');
 
 input.addEventListener('keyup', function(e){
 
@@ -49,12 +50,14 @@ checkAll.addEventListener('change', function(e){
             el.className = 'text-li';
             el.children[0].checked = true;
             showTotalCheckAll(ul);
+            buttonTotalSelect.removeAttribute('disabled');
         });
     } else {
         [].forEach.call(ul.querySelectorAll('li'), function(el) {
             el.className = '';
             el.children[0].checked = false;
             showTotalCheckAll(ul);
+            buttonTotalSelect.setAttribute('disabled', true);
         });
     }
 });
@@ -68,6 +71,11 @@ function showTotalAll(ul)
 function showTotalCheckAll(ul)
 {
     var allSelectLi = ul.querySelectorAll('.text-li');
+    if (allSelectLi.length>0) {
+        buttonTotalSelect.removeAttribute('disabled');
+    } else {
+        buttonTotalSelect.setAttribute('disabled', true);
+    }
     totalCheckAll.textContent = 'Clear selected('+allSelectLi.length+')';
 }
 
