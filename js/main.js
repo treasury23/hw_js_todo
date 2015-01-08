@@ -8,6 +8,7 @@ var input = document.querySelector('#input-text'),
     totalCheckAll = document.querySelector('#total-select'),
     checkAll = document.querySelector('#check-all');
     buttonTotalSelect = document.querySelector('#total-select');
+    filterSelect = document.querySelector('#filter')
 
 input.addEventListener('keyup', function(e){
 
@@ -86,4 +87,8 @@ totalCheckAll.addEventListener('click', function(e){
     });
     showTotalAll(ul);
     showTotalCheckAll(ul);
+});
+
+filterSelect.addEventListener('change', function(e){
+    console.log(e.target.value);
 });

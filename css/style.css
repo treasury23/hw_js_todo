@@ -33,3 +33,7 @@ ul{
 #total-all{
     padding-left: 25px;
 }
+label{
+    cursor: pointer;
+    font-weight: normal !important;
+}
