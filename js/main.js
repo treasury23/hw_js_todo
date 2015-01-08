@@ -62,13 +62,13 @@ checkAll.addEventListener('change', function(e){
 function showTotalAll(ul)
 {
     var allLi = ul.querySelectorAll('li');
-    totalAll.innerText = ' All item: ' + allLi.length;
+    totalAll.textContent = ' All item: ' + allLi.length;
 }
 
 function showTotalCheckAll(ul)
 {
     var allSelectLi = ul.querySelectorAll('.text-li');
-    totalCheckAll.innerText = 'Clear selected('+allSelectLi.length+')';
+    totalCheckAll.textContent = 'Clear selected('+allSelectLi.length+')';
 }
 
 totalCheckAll.addEventListener('click', function(e){
