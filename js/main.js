@@ -32,7 +32,6 @@ input.addEventListener('keyup', function(e){
         button.onclick = function(){this.parentNode.remove();showTotalAll(ul);showTotalCheckAll(ul);};
         chk.onclick = function(e){
             if (e.target.checked == true) {
-                console.log(this.parentNode);
                 this.parentNode.className = 'text-li';
                 showTotalCheckAll(ul);
             } else {
@@ -56,9 +55,10 @@ input.addEventListener('keyup', function(e){
         });
 
         darr.addEventListener('click', function(){
-            this.parentNode.parentNode.insertBefore(this.parentNode.nextSibling, this.parentNode);
+            if (this.parentNode.nextSibling != null) {
+                this.parentNode.parentNode.insertBefore(this.parentNode.nextSibling, this.parentNode);
+            }
         });
-
 
         span.addEventListener('dblclick', function(e){
             var updText = document.createElement('input');
@@ -70,6 +70,7 @@ input.addEventListener('keyup', function(e){
             span.style.display='none';
             li.appendChild(updText);
             updText.focus();
+
             updText.addEventListener('keyup', function(e){
                 if (e.target.value != '' && e.keyCode === 13) {
                     span.textContent = e.target.value;
@@ -77,6 +78,7 @@ input.addEventListener('keyup', function(e){
                     span.style.display='';
                 }
             });
+
             updText.addEventListener('blur', function (e) {
                 if (e.target.value != '') {
                     span.textContent = e.target.value;

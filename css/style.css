@@ -22,7 +22,7 @@ ul{
 .btn{
     float: right;
 }
-.text-li{
+.text-li span{
     text-decoration: line-through;
     color: #C0C0C0;
 }
@@ -43,6 +43,7 @@ label{
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    border-radius: 4px;
 }
 
 .uarr{
@@ -53,4 +54,7 @@ label{
 .darr{
     float: right;
     cursor: pointer;
+}
+select.form-control{
+    width: 150px;
 }
