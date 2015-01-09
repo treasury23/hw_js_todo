@@ -24,7 +24,6 @@ input.addEventListener('keyup', function(e){
             uarr.innerHTML = '&uarr;';
             uarr.className = 'uarr';
             span = document.createElement('span');
-            //span.setAttribute("contenteditable", "true");
             chk = document.createElement("input");
             chk.setAttribute("type", "checkbox");
 
@@ -51,13 +50,13 @@ input.addEventListener('keyup', function(e){
         showTotalAll(ul);
 
         uarr.addEventListener('click', function(){
-
-            this.parentNode.previousSibling.appendChild(this.parentNode);
-
+            if (this.parentNode.previousSibling != null) {
+                this.parentNode.parentNode.insertBefore(this.parentNode, this.parentNode.previousSibling);
+            }
         });
 
-        darr.addEventListener('click', function(e){
-            console.log('darr');
+        darr.addEventListener('click', function(){
+            this.parentNode.parentNode.insertBefore(this.parentNode.nextSibling, this.parentNode);
         });
 
 
