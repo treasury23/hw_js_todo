@@ -46,7 +46,7 @@ input.addEventListener('keyup', function(e){
 
         span.addEventListener('dblclick', function(e){
             var updText = document.createElement('input');
-            updText.setAttribute("id", "upd")
+            updText.setAttribute("maxlength", 25);
             var span = e.target;
             updText.type = 'text';
             updText.classList.add('input-upd');
@@ -62,9 +62,11 @@ input.addEventListener('keyup', function(e){
                 }
             });
             updText.addEventListener('blur', function (e) {
-                span.textContent = e.target.value;
-                e.target.remove();
-                span.style.display='';
+                if (e.target.value != '') {
+                    span.textContent = e.target.value;
+                    e.target.remove();
+                    span.style.display='';
+                }
             });
         });
     }
