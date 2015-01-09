@@ -6,8 +6,8 @@ var input = document.querySelector('#input-text'),
     ul = document.querySelector('#list').appendChild(document.createElement('ul')),
     totalAll = document.querySelector('#total-all'),
     totalCheckAll = document.querySelector('#total-select'),
-    checkAll = document.querySelector('#check-all');
-    buttonTotalSelect = document.querySelector('#total-select');
+    checkAll = document.querySelector('#check-all'),
+    buttonTotalSelect = document.querySelector('#total-select'),
     filterSelect = document.querySelector('#filter');
 
 input.addEventListener('keyup', function(e){
@@ -17,12 +17,18 @@ input.addEventListener('keyup', function(e){
         var li = document.createElement('li'),
             button = document.createElement('button'),
             t = document.createTextNode(e.target.value),
+            darr = document.createElement('div');
+            darr.innerHTML = '&darr;';
+            darr.className = 'darr';
+            uarr = document.createElement('div');
+            uarr.innerHTML = '&uarr;';
+            uarr.className = 'uarr';
             span = document.createElement('span');
             //span.setAttribute("contenteditable", "true");
             chk = document.createElement("input");
             chk.setAttribute("type", "checkbox");
 
-        button.className='btn btn-danger';
+        button.className = 'btn btn-danger';
         button.innerHTML = 'Remove';
         button.onclick = function(){this.parentNode.remove();showTotalAll(ul);showTotalCheckAll(ul);};
         chk.onclick = function(e){
@@ -37,16 +43,27 @@ input.addEventListener('keyup', function(e){
         };
 
         li.appendChild(chk);
-
         li.appendChild(span).appendChild(t);
-
         ul.appendChild(li).appendChild(button);
+        li.appendChild(uarr);
+        li.appendChild(darr);
         input.value = "";
         showTotalAll(ul);
 
+        uarr.addEventListener('click', function(){
+
+            this.parentNode.previousSibling.appendChild(this.parentNode);
+
+        });
+
+        darr.addEventListener('click', function(e){
+            console.log('darr');
+        });
+
+
         span.addEventListener('dblclick', function(e){
             var updText = document.createElement('input');
-            updText.setAttribute("maxlength", 25);
+            updText.setAttribute("maxlength", 20);
             var span = e.target;
             updText.type = 'text';
             updText.classList.add('input-upd');
@@ -137,4 +154,3 @@ filterSelect.addEventListener('change', function(e){
         }
     });
 });
-
