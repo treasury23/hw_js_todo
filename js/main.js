@@ -8,7 +8,7 @@ var input = document.querySelector('#input-text'),
     totalCheckAll = document.querySelector('#total-select'),
     checkAll = document.querySelector('#check-all');
     buttonTotalSelect = document.querySelector('#total-select');
-    filterSelect = document.querySelector('#filter')
+    filterSelect = document.querySelector('#filter');
 
 input.addEventListener('keyup', function(e){
 
@@ -16,9 +16,9 @@ input.addEventListener('keyup', function(e){
 
         var li = document.createElement('li'),
             button = document.createElement('button'),
-            span = document.createElement('span');
-            span.setAttribute("contenteditable", "true");
             t = document.createTextNode(e.target.value),
+            span = document.createElement('span');
+            //span.setAttribute("contenteditable", "true");
             chk = document.createElement("input");
             chk.setAttribute("type", "checkbox");
 
@@ -43,6 +43,30 @@ input.addEventListener('keyup', function(e){
         ul.appendChild(li).appendChild(button);
         input.value = "";
         showTotalAll(ul);
+
+        span.addEventListener('dblclick', function(e){
+            var updText = document.createElement('input');
+            updText.setAttribute("id", "upd")
+            var span = e.target;
+            updText.type = 'text';
+            updText.classList.add('input-upd');
+            updText.value = span.textContent;
+            span.style.display='none';
+            li.appendChild(updText);
+            updText.focus();
+            updText.addEventListener('keyup', function(e){
+                if (e.target.value != '' && e.keyCode === 13) {
+                    span.textContent = e.target.value;
+                    e.target.remove();
+                    span.style.display='';
+                }
+            });
+            updText.addEventListener('blur', function (e) {
+                span.textContent = e.target.value;
+                e.target.remove();
+                span.style.display='';
+            });
+        });
     }
 });
 
@@ -111,3 +135,4 @@ filterSelect.addEventListener('change', function(e){
         }
     });
 });
+
